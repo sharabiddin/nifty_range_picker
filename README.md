@@ -1,39 +1,62 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+///I need readme for that nifty range pciker
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+## Range Picker
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+The range picker is a simple component that allows you to select a range of dates. It is a simple
+component that is easy to use and can be customized to fit your needs.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
-## Features
+## Getting Started
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+To use this plugin, add `nifty_range_picker` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+
+NiftyRangeDatePicker(
+              controller: controller,
+              isVerticalAligned: false,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              currentDateDecorationColor: Colors.teal,
+              dividerColor: Colors.red,
+              currentDateDecoration: BoxDecoration(
+                color: Colors.purple.withOpacity(0.3),
+                shape: BoxShape.circle,
+              ),
+              leadingDateTextStyle: const TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
+              daysOfTheWeekTextStyle: const TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+              enabledCellsTextStyle: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              disabledCellsTextStyle: const TextStyle(
+                color: Colors.orangeAccent,
+                fontWeight: FontWeight.bold,
+              ),
+              selectedCellsTextStyle: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+              singleSelectedCellTextStyle: const TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
+              currentDateTextStyle: const TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+              selectedCellsDecorationColor: Colors.teal,
+              singleSelectedCellDecorationColor: Colors.teal,
+            )
+
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+`isVerticalAligned` flag is used for differentiate wide and small view ports, use `true` for small view ports and `false` for wide view ports.
