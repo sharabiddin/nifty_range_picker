@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   nifty_range_picker:
     path: ../
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

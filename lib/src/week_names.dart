@@ -27,7 +27,8 @@ class WeekNames extends StatelessWidget {
     MaterialLocalizations localizations,
   ) {
     final List<Widget> result = <Widget>[];
-    final weekdayNames = intl.DateFormat('', locale.toString()).dateSymbols.NARROWWEEKDAYS;
+    final weekdayNames =
+        intl.DateFormat('', locale.toString()).dateSymbols.WEEKDAYS.map((e) => e[0].toUpperCase()).toList();
 
     for (int i = localizations.firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       final String weekday = weekdayNames[i];

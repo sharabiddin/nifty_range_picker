@@ -282,7 +282,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
                   leftArrowIcon: widget.leftArrowIcon,
                   rightArrowIcon: widget.rightArrowIcon,
                   onDateTap: () => widget.onLeadingDateTap?.call(),
-                  displayedDate: _leadingDateFormatter(_displayedMonth!),
+                  displayedDate: _leadingDateFormatter(_displayedMonth!, Localizations.localeOf(context)),
                   onNextPage: () {
                     _pageController.nextPage(
                       duration: const Duration(milliseconds: 300),
@@ -381,7 +381,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
                             onTap: () {
                               widget.onLeadingDateTap?.call();
                             },
-                            displayedText: _leadingDateFormatter(month),
+                            displayedText: _leadingDateFormatter(month, Localizations.localeOf(context)),
                             displayedTextStyle: leadingDateTextStyle,
                           ),
                           const SizedBox(height: 24),
@@ -419,5 +419,11 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
           );
   }
 
-  String _leadingDateFormatter(DateTime month) => DateFormat("MMMM, yyyy").format(month);
+  String _leadingDateFormatter(DateTime month, Locale locale) {
+    //Need to make first letter Uppercase
+    return DateFormat("MMMM, yyyy", locale.toString()).format(month).replaceFirstMapped(
+          RegExp(r'^\w'),
+          (match) => match.group(0)!.toUpperCase(),
+        );
+  }
 }

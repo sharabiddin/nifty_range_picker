@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'leading_date.dart';
 
@@ -38,10 +40,13 @@ class Header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        LeadingDate(
-          onTap: onDateTap,
-          displayedText: displayedDate,
-          displayedTextStyle: leadingDateTextStyle,
+        AnimatedSize(
+          duration: Durations.short1,
+          child: LeadingDate(
+            onTap: onDateTap,
+            displayedText: displayedDate,
+            displayedTextStyle: leadingDateTextStyle,
+          ),
         ),
         Row(
           children: [
