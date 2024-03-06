@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * Localization Updated.
+
+## 0.0.4
+
+* Bug Fixes.

@@ -160,15 +160,18 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
   DateTime? _displayedMonth;
   final GlobalKey _pageViewKey = GlobalKey();
   late final PageController _pageController;
+  late final ScrollController _listViewScrollController;
 
   double maxHeight = 47.5 * 6;
 
   @override
   void initState() {
     _displayedMonth = DateUtils.dateOnly(widget.initialDate ?? DateTime.now());
-    _pageController = PageController(
-      initialPage: DateUtils.monthDelta(widget.minDate, _displayedMonth!),
-    );
+
+    final monthDelta = DateUtils.monthDelta(widget.minDate, _displayedMonth!);
+    _pageController = PageController(initialPage: monthDelta);
+    //I need to scroll to end of the list view by default
+    _listViewScrollController = ScrollController();
 
     super.initState();
   }
@@ -187,6 +190,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
   @override
   void dispose() {
     _pageController.dispose();
+    _listViewScrollController.dispose();
     super.dispose();
   }
 
@@ -368,11 +372,17 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
               Flexible(
                 child: ListView.builder(
                     shrinkWrap: true,
+                    reverse: true,
+                    controller: _listViewScrollController,
                     padding: widget.contentPadding ?? EdgeInsets.zero,
                     itemCount: DateUtils.monthDelta(widget.minDate, widget.maxDate) + 1,
                     itemBuilder: (context, index) {
-                      final DateTime month = DateUtils.addMonthsToMonthDate(widget.minDate, index);
+                      final DateTime month = DateUtils.addMonthsToMonthDate(
+                        widget.minDate,
+                        DateUtils.monthDelta(widget.minDate, widget.maxDate) - index,
+                      );
                       return Column(
+                        key: ValueKey<DateTime>(month),
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
