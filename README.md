@@ -1,5 +1,3 @@
-///I need readme for that nifty range pciker
-
 ## Range Picker
 
 The range picker is a simple component that allows you to select a range of dates. It is a simple
