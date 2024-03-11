@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * Bug Fixes.
+
+## 0.0.5
+
+* Added mouse region for arrow keys.

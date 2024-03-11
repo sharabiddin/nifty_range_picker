@@ -50,24 +50,32 @@ class Header extends StatelessWidget {
         ),
         Row(
           children: [
-            GestureDetector(
-              onTap: onPreviousPage,
-              child: leftArrowIcon ??
-                  Icon(
-                    CupertinoIcons.chevron_left,
-                    size: slidersSize,
-                    color: slidersColor,
-                  ),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: onPreviousPage,
+                child: leftArrowIcon ??
+                    Icon(
+                      CupertinoIcons.chevron_left,
+                      size: slidersSize,
+                      color: slidersColor,
+                    ),
+              ),
             ),
             const SizedBox(width: 16),
-            GestureDetector(
-              onTap: onNextPage,
-              child: rightArrowIcon ??
-                  Icon(
-                    CupertinoIcons.chevron_right,
-                    size: slidersSize,
-                    color: slidersColor,
-                  ),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: onNextPage,
+                child: rightArrowIcon ??
+                    Icon(
+                      CupertinoIcons.chevron_right,
+                      size: slidersSize,
+                      color: slidersColor,
+                    ),
+              ),
             ),
           ],
         )

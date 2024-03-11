@@ -39,7 +39,7 @@ class _NiftyRangePickerExamplePageState extends State<NiftyRangePickerExamplePag
             color: Colors.grey[200],
             child: NiftyRangeDatePicker(
               controller: controller,
-              isVerticalAligned: true,
+              isVerticalAligned: false,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               currentDateDecorationColor: Colors.teal,
               dividerColor: Colors.red,
@@ -75,6 +75,7 @@ class _NiftyRangePickerExamplePageState extends State<NiftyRangePickerExamplePag
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,
               ),
+
               selectedCellsDecorationColor: Colors.teal,
               singleSelectedCellDecorationColor: Colors.teal,
             ),

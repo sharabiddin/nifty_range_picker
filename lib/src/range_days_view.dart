@@ -242,7 +242,7 @@ class RangeDaysView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const PickerGridDelegate(
         columnCount: DateTime.daysPerWeek,
-        columnPadding: 0,
+        columnPadding: -1,
         rowPadding: 5,
         rowExtent: _dayPickerRowHeight,
         rowStride: _dayPickerRowHeight,
