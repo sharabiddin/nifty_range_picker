@@ -49,6 +49,7 @@ class RangeDaysPicker extends StatefulWidget {
     this.dividerColor,
     this.leftArrowIcon,
     this.rightArrowIcon,
+    required this.isReversedList,
   }) {
     assert(!minDate.isAfter(maxDate), "minDate can't be after maxDate");
 
@@ -77,6 +78,7 @@ class RangeDaysPicker extends StatefulWidget {
 
   final DateTime? initialDate;
   final bool? isVerticalAligned;
+  final bool isReversedList;
 
   final DateTime? currentDate;
 
@@ -372,15 +374,21 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
               Flexible(
                 child: ListView.builder(
                     shrinkWrap: true,
-                    reverse: true,
+                    reverse: widget.isReversedList,
                     controller: _listViewScrollController,
                     padding: widget.contentPadding ?? EdgeInsets.zero,
                     itemCount: DateUtils.monthDelta(widget.minDate, widget.maxDate) + 1,
                     itemBuilder: (context, index) {
-                      final DateTime month = DateUtils.addMonthsToMonthDate(
-                        widget.minDate,
-                        DateUtils.monthDelta(widget.minDate, widget.maxDate) - index,
-                      );
+                      late final DateTime month;
+
+                      if (widget.isReversedList) {
+                        month = DateUtils.addMonthsToMonthDate(
+                          widget.minDate,
+                          DateUtils.monthDelta(widget.minDate, widget.maxDate) - index,
+                        );
+                      } else {
+                        month = DateUtils.addMonthsToMonthDate(widget.minDate, index);
+                      }
                       return Column(
                         key: ValueKey<DateTime>(month),
                         crossAxisAlignment: CrossAxisAlignment.start,

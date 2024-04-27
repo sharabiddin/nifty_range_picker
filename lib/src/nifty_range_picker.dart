@@ -41,10 +41,12 @@ class NiftyRangeDatePicker extends StatefulWidget {
     this.leftArrowIcon,
     this.rightArrowIcon,
     required this.controller,
+    this.isReversedList = true,
   }) {
     assert(!controller.firstDate.isAfter(controller.lastDate), "minDate can't be after maxDate");
   }
 
+  final bool isReversedList;
   final NiftyRangePickerController controller;
 
   final DateTime? initialDate;
@@ -154,6 +156,7 @@ class _NiftyRangeDatePickerState extends State<NiftyRangeDatePicker> {
   Widget build(BuildContext context) => RangeDaysPicker(
         currentDate: DateUtils.dateOnly(widget.controller.currentDate),
         initialDate: _diplayedDate,
+        isReversedList: widget.isReversedList,
         isVerticalAligned: widget.isVerticalAligned,
         selectedEndDate: _selectedEndDate,
         selectedStartDate: _selectedStartDate,
