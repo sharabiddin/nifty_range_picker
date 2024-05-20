@@ -21,3 +21,7 @@
 ## 0.0.6
 
 * Added `isReversedList` property.
+
+## 0.0.7
+
+* Fixed issue with flutter text theme.

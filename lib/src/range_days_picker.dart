@@ -200,7 +200,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
   Widget build(BuildContext context) {
     final TextStyle daysOfTheWeekTextStyle = widget.daysOfTheWeekTextStyle ??
         TextStyle(
-          color: widget.daysOfTheWeekTextStyleColor ?? Theme.of(context).textTheme.subtitle1!.color!.withOpacity(0.30),
+          color: widget.daysOfTheWeekTextStyleColor ?? Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.30),
           fontWeight: FontWeight.bold,
           fontSize: 14,
         );
@@ -208,7 +208,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
     final TextStyle enabledCellsTextStyle = widget.enabledCellsTextStyle ??
         TextStyle(
           fontWeight: FontWeight.normal,
-          color: widget.enabledCellsTextStyleColor ?? Theme.of(context).textTheme.subtitle1!.color,
+          color: widget.enabledCellsTextStyleColor ?? Theme.of(context).textTheme.bodyLarge!.color,
         );
 
     final BoxDecoration enabledCellsDecoration = widget.enabledCellsDecoration;
@@ -216,7 +216,7 @@ class __RangeDaysPickerState extends State<RangeDaysPicker> {
     final TextStyle disabledCellsTextStyle = widget.disabledCellsTextStyle ??
         TextStyle(
           fontWeight: FontWeight.normal,
-          color: widget.disabledCellsTextStyleColor ?? Theme.of(context).textTheme.subtitle1!.color!.withOpacity(0.30),
+          color: widget.disabledCellsTextStyleColor ?? Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.30),
         );
 
     final BoxDecoration disbaledCellsDecoration = widget.disabledCellsDecoration;
