@@ -25,3 +25,7 @@
 ## 0.0.7
 
 * Fixed issue with flutter text theme.
+
+## 0.0.8
+
+* Added `isSingleDayPicker` property.

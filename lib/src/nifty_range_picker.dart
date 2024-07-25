@@ -42,6 +42,7 @@ class NiftyRangeDatePicker extends StatefulWidget {
     this.rightArrowIcon,
     required this.controller,
     this.isReversedList = true,
+    this.isSingleDayPicker = false,
   }) {
     assert(!controller.firstDate.isAfter(controller.lastDate), "minDate can't be after maxDate");
   }
@@ -50,6 +51,7 @@ class NiftyRangeDatePicker extends StatefulWidget {
   final NiftyRangePickerController controller;
 
   final DateTime? initialDate;
+  final bool isSingleDayPicker;
 
   final EdgeInsets padding;
 
@@ -193,27 +195,38 @@ class _NiftyRangeDatePickerState extends State<NiftyRangeDatePicker> {
         leftArrowIcon: widget.leftArrowIcon,
         rightArrowIcon: widget.rightArrowIcon,
         contentPadding: widget.contentPadding,
-        onEndDateChanged: (date) {
-          setState(() {
-            _selectedEndDate = date;
-          });
-
-          if (_selectedStartDate != null) {
-            widget.controller.selectedRange = DateTimeRange(
-              start: _selectedStartDate!,
-              end: _selectedEndDate!,
-            );
-          }
-        },
-        onStartDateChanged: (date) {
-          setState(() {
-            _selectedStartDate = date;
-            _selectedEndDate = null;
-          });
-          widget.controller.selectedRange = DateTimeRange(
-            start: _selectedStartDate!,
-            end: _selectedStartDate!,
-          );
-        },
+        onEndDateChanged: _endDateChanged,
+        onStartDateChanged: _startDateChanged,
       );
+
+  void _endDateChanged(date) {
+    setState(() {
+      _selectedEndDate = date;
+    });
+
+    if (_selectedStartDate != null) {
+      widget.controller.selectedRange = DateTimeRange(
+        start: _selectedStartDate!,
+        end: _selectedEndDate!,
+      );
+    }
+  }
+
+  void _startDateChanged(DateTime date) {
+    if (widget.isSingleDayPicker) {
+      _selectedEndDate = date;
+    }
+    setState(() {
+      _selectedStartDate = date;
+      if (widget.isSingleDayPicker) {
+        _selectedEndDate = date;
+      } else {
+        _selectedEndDate = null;
+      }
+    });
+    widget.controller.selectedRange = DateTimeRange(
+      start: _selectedStartDate!,
+      end: _selectedStartDate!,
+    );
+  }
 }

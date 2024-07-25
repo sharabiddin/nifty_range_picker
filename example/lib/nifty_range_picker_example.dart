@@ -40,6 +40,7 @@ class _NiftyRangePickerExamplePageState extends State<NiftyRangePickerExamplePag
             child: NiftyRangeDatePicker(
               controller: controller,
               isReversedList: false,
+              isSingleDayPicker: false,
               isVerticalAligned: true,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               currentDateDecorationColor: Colors.teal,
