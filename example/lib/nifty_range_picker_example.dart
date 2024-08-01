@@ -10,7 +10,7 @@ class NiftyRangePickerExamplePage extends StatefulWidget {
 
 class _NiftyRangePickerExamplePageState extends State<NiftyRangePickerExamplePage> {
   final NiftyRangePickerController controller = NiftyRangePickerController(
-    firstDate: DateTime.now(),
+    firstDate: DateTime.now().add(const Duration(days: 1)) ,
     lastDate: DateTime.now().add(const Duration(days: 365)),
     currentDate: DateTime.now(),
   );

@@ -58,17 +58,6 @@ class RangeDaysPicker extends StatefulWidget {
         if (initialDate == null) return true;
         final init = DateTime(initialDate!.year, initialDate!.month, initialDate!.day);
 
-        final min = DateTime(minDate.year, minDate.month, minDate.day);
-
-        return init.isAfter(min) || init.isAtSameMomentAs(min);
-      }(),
-      'initialDate $initialDate must be on or after minDate $minDate.',
-    );
-    assert(
-      () {
-        if (initialDate == null) return true;
-        final init = DateTime(initialDate!.year, initialDate!.month, initialDate!.day);
-
         final max = DateTime(maxDate.year, maxDate.month, maxDate.day);
         return init.isBefore(max) || init.isAtSameMomentAs(max);
       }(),

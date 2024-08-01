@@ -29,3 +29,7 @@
 ## 0.0.8
 
 * Added `isSingleDayPicker` property.
+
+## 0.0.9
+
+* Made initial date flexible.
